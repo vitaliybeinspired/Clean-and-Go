@@ -1,0 +1,12 @@
+
+
+Assumptions
+
+No managers. No need for self relationships management in Employee entity.
+Customers cannot self-service. They must be serviced by an employee.
+SSN is unique.
+No departements. Small company of ten people.
+No benefits. No need for dependents entity to store data of family members.
+All three services cost the same and have the same duration.
+Payment model is assumed to take a string for customer credit card information 16 digits plus 3 digits to verify.
+Only assets that are sold by supplier are recorded. Offers are not recorded.
