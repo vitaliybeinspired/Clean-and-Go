@@ -1,0 +1,8 @@
+Design Choice
+We made a ternary transaction relationship with Employee, Service, and Customer entities because we need to record when an employee provided service to a customer.
+To avoid ternary relationships, we made an Assets entity that is a union to group Cleaning Supplies, Equipment, and building into a category. This way, a Supplier can sell Assets and Employees can use these Assets. Equipment and Cleaning Supplies are completely different so Assets cannot be an inheritance entity.
+All three services (coin washers and dryers, drop off services, and dry cleaning) were grouped into one entity called service. An attribute called description can be used to distinguish and sort the different services.
+Building entity was created to store the rent expense of the building and utility expenses.
+Cardinality are many to many between Supplier and Assets because many Suppliers can sell Assets and Assets can be sold by many Suppliers.
+Cardinality are many to many to many in the ternary relationship Transactions because Employees provide many Services and Services are provided by many Employees. Employees serve many Customers and Customers are served by many Employees. Customers can buy many Services and Services are bought by many Customers.
+What is the cardinality for union????
