@@ -108,7 +108,6 @@ create table if not exists MSchedule(
 create table if not exists Sell(
 	A_ID int,
     Supplier_ID varchar(50),
-    Sale_ID integer(9) auto_increment,
     SaleDate date,
     DiliveryDate date,
     description varchar(50),
@@ -136,7 +135,6 @@ create table if not exists TransactionInfo(
     Customer_ID varchar(20),
     Service_ID varchar(20),
     TransactionDate timestamp,
-    Tx_ID integer(9) auto_increment,
     AmountCharge decimal(9,2),
     Satisfaction varchar(25),
     foreign key (SSN) references Employee(SSN) on delete cascade,
