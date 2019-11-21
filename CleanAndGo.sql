@@ -79,7 +79,7 @@ create table if not exists Equipment(
 create table if not exists CleanSupplies(
 	A_ID int,
 	CName varchar(225),
-    Usage varchar(225),
+    CUsage varchar(225),
     Inventory integer(9),
     SafetyInfo varchar(50),
     foreign key (A_ID) references Assets(A_ID) on delete cascade,
