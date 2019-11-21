@@ -101,7 +101,7 @@ create table if not exists MSchedule(
 	EquipmentID varchar(50),
     NextMaintDate date,
     foreign key (EquipmentID) references Equipment(E_ID) on delete cascade,
-    primary key (EquipmentID, DateofNextMaintainence)
+    primary key (EquipmentID, NextMaintDate)
 );
 
 create table if not exists Sells(
