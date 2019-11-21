@@ -13,5 +13,5 @@ https://docs.google.com/drawings/d/18yJQ_bb24zxtwxgCiXeXRbbP8V-QPFmIOCPQeAwqyoo/
 # ER Diagram
 https://drive.google.com/file/d/1e919zD8UB1cX1DXx_8e2S7uQInWi653g/view?usp=sharing
 
-# SQL Hardcoded Data
+# SQL Hardcoded Data Doc
 https://docs.google.com/document/d/1O3NlXtkUrBnTo8zZE389NXYhi4oxRqh2bBTsI61V8oM/edit?usp=sharing
