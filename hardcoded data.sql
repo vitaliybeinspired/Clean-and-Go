@@ -120,29 +120,29 @@ insert into MSchedule values('09','2019-12-09');
 insert into MSchedule values('010','2020-01-10');
 
 #sells : a_id is from(2-21) and supplier id is from(123-129, 111, 222, 133)
-insert into Sells values(6, '123', "2018-11-24", "2018-11-27", '', 20.00, 600.00, 30.00);
-insert into Sells values(2, '129', "2018-10-24", "2018-11-24", '', 2.00, 60.00, 30.00);
-insert into Sells values(21, '111', "2018-12-29", "2019-1-5", '', 10.00, 400.00, 40.00);
-insert into Sells values(18, '222', "2019-11-24", "2019-11-27", '', 20.00, 1600.00, 80.00);
-insert into Sells values(9, '133', "2017-6-24", "2018-7-2", '', 40.00, 800.00, 20.00);
-insert into Sells values(7, '127', "2017-8-24", "2018-9-7", '', 60.00, 600.00, 10.00);
-insert into Sells values(13, '124', "2017-10-24", "2018-11-12", '', 200.00, 600.00, 3.00);
-insert into Sells values(17, '125', "2019-4-24", "2018-4-27", '', 250.00, 1000.00, 40.00);
-insert into Sells values(4, '133', "2019-2-24", "2018-6-19", '', 25.00, 125.00, 3.00);
-insert into Sells values(19, '111', "2019-1-24", "2019-3-7", '', 12.00, 60.00, 5.00);
+insert into Sells values(6, '123', "2018-11-24", "2018-11-27", 'test1', 20.00, 600.00, 30.00);
+insert into Sells values(2, '129', "2018-10-24", "2018-11-24", 'test2', 2.00, 60.00, 30.00);
+insert into Sells values(21, '111', "2018-12-29", "2019-1-5", 'test3', 10.00, 400.00, 40.00);
+insert into Sells values(18, '222', "2019-11-24", "2019-11-27", 'test4', 20.00, 1600.00, 80.00);
+insert into Sells values(9, '133', "2017-6-24", "2018-7-2", 'test5', 40.00, 800.00, 20.00);
+insert into Sells values(7, '127', "2017-8-24", "2018-9-7", 'test6', 60.00, 600.00, 10.00);
+insert into Sells values(13, '124', "2017-10-24", "2018-11-12", 'test7', 200.00, 600.00, 3.00);
+insert into Sells values(17, '125', "2019-4-24", "2018-4-27", 'test8', 250.00, 1000.00, 40.00);
+insert into Sells values(4, '133', "2019-2-24", "2018-6-19", 'test9', 25.00, 125.00, 3.00);
+insert into Sells values(19, '111', "2019-1-24", "2019-3-7", 'test10', 12.00, 60.00, 5.00);
 
 #uses table : ssn:(nnn000nnn n: 1-9, 000111000), a_id:(2-11)
 #ssn, a_id, description
-insert into Uses values('111000111',2,"");
-insert into Uses values('222000222',3,"");
-insert into Uses values('333000333',4,"");
-insert into Uses values('444000444',5,"");
-insert into Uses values('555000555',6,"");
-insert into Uses values('666000666',7,"");
-insert into Uses values('777000777',8,"");
-insert into Uses values('888000888',9,"");
-insert into Uses values('999000999',10,"");
-insert into Uses values('000111000',11,"");
+insert into Uses values('111000111',2,"test1");
+insert into Uses values('222000222',3,"test2");
+insert into Uses values('333000333',4,"test3");
+insert into Uses values('444000444',5,"test4");
+insert into Uses values('555000555',6,"test5");
+insert into Uses values('666000666',7,"test6");
+insert into Uses values('777000777',8,"test7");
+insert into Uses values('888000888',9,"test8");
+insert into Uses values('999000999',10,"test9");
+insert into Uses values('000111000',11,"test10");
 
 #transaction info : ssn , customer id('10045','12345','18888','19755','33333','44444','54321','56665','99764','99999',), service id(01 -10)
 insert into TransactionInfo values('111000111','10045','01',"2019-11-24 00:30:02", 10000.00, 'Highly Satisfied');
