@@ -123,10 +123,11 @@ create table if not exists Sells(
 create table if not exists Uses(
 	SSN char(9),
     A_ID int,
+	TimeOfUse timestamp,
     Description varchar(50),
     foreign key (SSN) references Employee(SSN) on delete cascade,
     foreign key (A_ID) references Assets(A_ID) on delete cascade,
-    primary key (SSN, A_ID)
+    primary key (SSN, A_ID,TimeOfUse)
 );
 
 create table if not exists TransactionInfo(
