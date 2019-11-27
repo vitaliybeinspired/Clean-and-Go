@@ -136,7 +136,7 @@ insert into Sells values(19, '111', "2019-1-24", "2019-3-7", 'test10', 12.00, 60
 insert into Uses values('111000111',2,"2019-10-2 13:30:02","test1");
 insert into Uses values('222000222',3,"2019-1-4 10:40:23","test2");
 insert into Uses values('333000333',4,"2019-7-26 05:05:57","test3");
-insert into Uses values('444000444',5,"2019-8-38 06:10:19","test4");
+insert into Uses values('444000444',5,"2019-8-18 06:10:19","test4");
 insert into Uses values('555000555',6,"2019-4-21 10:45:02","test5");
 insert into Uses values('666000666',7,"2019-8-15 08:35:02","test6");
 insert into Uses values('777000777',8,"2019-2-27 12:37:29","test7");
