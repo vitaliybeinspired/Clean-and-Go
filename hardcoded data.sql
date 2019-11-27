@@ -91,9 +91,9 @@ insert into Equipment values('010',11,'LG','Dust Pan', 20.00);
 #works with single quotes
 #i think safetyinfo might need to be an int? It is the level where we need to order more isn’t it?
 #unless mysql has a casting operation, how can we compare between int & varchar?
-insert into CleanSupplies values(12,'Bleach','Disinfectant',100,75);
-insert into CleanSupplies values(13,'Soap','Disinfectant',10,7);
-insert into CleanSupplies values(14,'Lysol','Disinfectant',200,150);
+insert into CleanSupplies values(12,'Bleach','Disinfectant',74,75);
+insert into CleanSupplies values(13,'Soap','Disinfectant',6,7);
+insert into CleanSupplies values(14,'Lysol','Disinfectant',100,150);
 insert into CleanSupplies values(15,'Rags','General Cleaning',200,175);
 insert into CleanSupplies values(16,'Sponges','General Cleaning',200,150);
 insert into CleanSupplies values(17,'Tide Pods','Clothes Cleaning', 500, 200);
