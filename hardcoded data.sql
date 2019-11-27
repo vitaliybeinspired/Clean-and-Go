@@ -132,17 +132,17 @@ insert into Sells values(4, '133', "2019-2-24", "2018-6-19", 'test9', 25.00, 125
 insert into Sells values(19, '111', "2019-1-24", "2019-3-7", 'test10', 12.00, 60.00, 5.00);
 
 #uses table : ssn:(nnn000nnn n: 1-9, 000111000), a_id:(2-11)
-#ssn, a_id, description
-insert into Uses values('111000111',2,"test1");
-insert into Uses values('222000222',3,"test2");
-insert into Uses values('333000333',4,"test3");
-insert into Uses values('444000444',5,"test4");
-insert into Uses values('555000555',6,"test5");
-insert into Uses values('666000666',7,"test6");
-insert into Uses values('777000777',8,"test7");
-insert into Uses values('888000888',9,"test8");
-insert into Uses values('999000999',10,"test9");
-insert into Uses values('000111000',11,"test10");
+#ssn, a_id, timeOfUse, description
+insert into Uses values('111000111',2,"2019-10-2 13:30:02","test1");
+insert into Uses values('222000222',3,"2019-1-4 10:40:23","test2");
+insert into Uses values('333000333',4,"2019-7-26 05:05:57","test3");
+insert into Uses values('444000444',5,"2019-8-38 06:10:19","test4");
+insert into Uses values('555000555',6,"2019-4-21 10:45:02","test5");
+insert into Uses values('666000666',7,"2019-8-15 08:35:02","test6");
+insert into Uses values('777000777',8,"2019-2-27 12:37:29","test7");
+insert into Uses values('888000888',9,"2019-9-13 00:36:22","test8");
+insert into Uses values('999000999',10,"2019-7-4 13:35:52","test9");
+insert into Uses values('000111000',11,"2019-6-7 18:34:12","test10");
 
 #transaction info : ssn , customer id('10045','12345','18888','19755','33333','44444','54321','56665','99764','99999',), service id(01 -10)
 insert into TransactionInfo values('111000111','10045','01',"2019-11-24 00:30:02", 10000.00, 'Highly Satisfied');
