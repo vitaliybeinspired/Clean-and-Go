@@ -1,0 +1,111 @@
+        
+//         DELIMITER $$
+//         CREATE PROCEDURE add_employee(IN SSN char(9), IN Fname varchar(20), IN Minitial char(1), IN Lname varchar(20), IN gender varchar(20),
+//         IN DateHired date, IN position varchar(20), IN salary decimal(8,2), IN addres varchar(100), IN telephone varchar(20))
+//         
+//         BEGIN
+//         INSERT INTO Employee VALUES(SSN, Fname, Minitial, Lname, gender, DateHired, position, salary, address, telephone);
+//         END$$
+//         DELIMITER ;        
+       
+        
+        private static void addEmployee(Connection conn) throws SQLException, IOException {        	
+            		String query = "Insert into Employee values(?,?,?,?,?,?,?,?,?,?)";
+            		PreparedStatement p = conn.prepareStatement(query);
+                        		
+             		String SSN = readEntry("Enter employee SSN: ");
+            		p.clearParameters();
+            		p.setString(1, SSN); 
+             		String Fname = readEntry("Enter First Name: ");
+            		p.setString(2, Fname);            
+             		String Minitial = readEntry("Enter Middle Initial: ");
+            		p.setString(3, Minitial);
+             		String Lname = readEntry("Enter Last Name: ");
+            		p.setString(4, Lname);
+             		String gender = readEntry("Enter Gender: ");
+            		p.setString(5, gender);
+            		String Date = readEntry("Enter Date Hired: ");
+            		p.setString(6, Date); 
+             		String position = readEntry("Enter Position: ");
+            		p.setString(7, position);
+             		String salary = readEntry("Enter Salary: ");
+            		p.setString(8, salary);
+             		String address = readEntry("Enter Address: ");
+            		p.setString(9, address);
+             		String telephone = readEntry("Enter Telephone: ");
+            		p.setString(10, telephone);
+            
+            		p.executeUpdate();
+        }
+        
+        
+        // how do I handle foreign keys?
+        
+//        DELIMITER $$
+//        CREATE PROCEDURE add_equipment(OUT E_ID varchar(50), OUT A_ID int(11), IN Brand_Name varchar(25), 
+//        IN E_Type varchar(20), IN MaintPrice decimal)
+//
+//        BEGIN
+//        INSERT INTO Equipment VALUES(E_ID, A_ID, Brand_Name, E_Type, MaintPrice);
+//        END$$
+//        DELIMITER ;
+        
+        
+        
+        private static void addEquipment(Connection conn) throws SQLException, IOException {        	
+    		String query = "Insert into Equipment values(?,?,?,?,?)";
+    		PreparedStatement p = conn.prepareStatement(query);
+    
+    		// how are foreign keys made, Asset_ID is auto incremented...
+    		// insert into assets script
+    		// 
+
+     		String A_ID = readEntry("Enter Asset ID: ");
+     		// increment A_ID
+     		// 
+     		// return count of assets
+     		// first need to get last A_ID or increment A_ID
+    		p.clearParameters();
+    		p.setString(1, A_ID); 
+     		String E_ID = readEntry("Enter Equipment ID: ");
+    		p.setString(2, E_ID);            
+     		String Brand_Name = readEntry("Enter Brand Name: ");
+    		p.setString(3, Brand_Name);
+     		String E_Type = readEntry("Enter Equipment Type: ");
+    		p.setString(4, E_Type);
+     		String MaintPrice = readEntry("Enter Maintaince Price: ");
+    		p.setString(5, MaintPrice);    	
+    
+    		p.executeUpdate();
+}
+
+//        DELIMITER $$
+//        CREATE PROCEDURE add_service(IN service_ID varchar(50), IN S_Name varchar(20), IN Description varchar(50), IN Rate decimal, 
+//        IN Duration decimal) 
+//
+//        BEGIN
+//        INSERT INTO Service VALUES(service_ID, S_Name, Description, Rate, Duration);
+//        END$$
+//        DELIMITER ;
+        
+        
+        
+        private static void addService(Connection conn) throws SQLException, IOException {        	
+    		String query = "Insert into Service values(?,?,?,?,?)";
+    		PreparedStatement p = conn.prepareStatement(query);
+        		
+     		String service_ID = readEntry("Enter Service ID: ");
+    		p.clearParameters();
+    		p.setString(1, service_ID); 
+     		String S_Name = readEntry("Enter Service Name: ");
+    		p.setString(2, S_Name);            
+     		String Description = readEntry("Enter Description: ");
+    		p.setString(3, Description);
+     		String Rate = readEntry("Enter Rate: ");
+    		p.setString(4, Rate);
+     		String Duration = readEntry("Enter Duration: ");
+    		p.setString(5, Duration);    	
+    		
+    		p.executeUpdate();
+    
+        }
