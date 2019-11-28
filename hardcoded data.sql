@@ -28,11 +28,9 @@ insert into Assets values();insert into Assets values();insert into Assets value
 insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
 insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
 insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
-insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
-insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
-insert into Assets values();insert into Assets values();insert into Assets values();insert into Assets values(); 
+insert into Assets values();
 
-#do this 30 times 
+#do this 21 times 
 #A_ID(1) is taken by building
 #A_ID (2-11) are taken by equipment
 #A_ID(12-21) are taken by cleaning supplies 
