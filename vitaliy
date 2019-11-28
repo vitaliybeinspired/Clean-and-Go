@@ -9,6 +9,8 @@
 //         DELIMITER ;        
        
         
+// Verified addEmployee works
+
         private static void addEmployee(Connection conn) throws SQLException, IOException {        	
             		String query = "Insert into Employee values(?,?,?,?,?,?,?,?,?,?)";
             		PreparedStatement p = conn.prepareStatement(query);
@@ -39,7 +41,6 @@
         }
         
         
-        // how do I handle foreign keys?
         
 //        DELIMITER $$
 //        CREATE PROCEDURE add_equipment(OUT E_ID varchar(50), OUT A_ID int(11), IN Brand_Name varchar(25), 
@@ -51,7 +52,7 @@
 //        DELIMITER ;
         
         
-        
+// Working on this one, NOT DONE
         private static void addEquipment(Connection conn) throws SQLException, IOException {        	
     		String query = "Insert into Equipment values(?,?,?,?,?)";
     		PreparedStatement p = conn.prepareStatement(query);
@@ -89,7 +90,7 @@
 //        DELIMITER ;
         
         
-        
+// Working on this one, NOT DONE        
         private static void addService(Connection conn) throws SQLException, IOException {        	
     		String query = "Insert into Service values(?,?,?,?,?)";
     		PreparedStatement p = conn.prepareStatement(query);
