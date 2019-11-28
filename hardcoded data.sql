@@ -65,6 +65,10 @@ insert into Customer values('33333', 'Test', 'T', 'Test','Planet Earth', 'aaa@ho
 
 #Eschedule
 insert into Eschedule values('111000111', '2019-11-21', '0900', '1700',8);
+insert into Eschedule values('111000111', '2019-11-20', '0900', '1700',8);
+insert into Eschedule values('111000111', '2019-11-19', '0900', '1700',8);
+insert into Eschedule values('111000111', '2019-11-22', '0800', '1600',8);
+insert into Eschedule values('111000111', '2019-11-23', '1000', '1800',8);
 insert into Eschedule values('222000222', '2019-11-21', '0900', '1700',8);
 insert into Eschedule values('333000333', '2019-11-21', '0900', '1700',8);
 insert into Eschedule values('444000444', '2019-11-21', '0900', '1700',8);
@@ -85,7 +89,7 @@ insert into Equipment values('06',7,'GE','Duster', 50.00);
 insert into Equipment values('07',8,'Roku','TV', 250.00);
 insert into Equipment values('08',9,'Costco','Mop', 10.00);
 insert into Equipment values('09',10,'LG','Swiffer', 30.00);
-insert into Equipment values('010',11,'LG','Dust Pan', 20.00);
+insert into Equipment values('10',11,'LG','Dust Pan', 20.00);
 
 #CleanSupplies
 #works with single quotes
@@ -109,6 +113,8 @@ insert into Building values(1,1,100000,25000,"2018-7-03");
 #MSchedule
 #working with single quoted first field
 insert into MSchedule values('01','2019-04-01');
+insert into MSchedule values('01','2019-11-20');
+insert into MSchedule values('01','2019-11-21');
 insert into MSchedule values('02','2019-05-02');
 insert into MSchedule values('03','2019-06-03');
 insert into MSchedule values('04','2019-07-04');
@@ -143,6 +149,11 @@ insert into Uses values('777000777',8,"2019-2-27 12:37:29","test7");
 insert into Uses values('888000888',9,"2019-9-13 00:36:22","test8");
 insert into Uses values('999000999',10,"2019-7-4 13:35:52","test9");
 insert into Uses values('000111000',11,"2019-6-7 18:34:12","test10");
+insert into Uses values('777000777',2,"2019-2-27 12:37:29","test11");
+insert into Uses values('888000888',3,"2019-3-27 00:36:22","test12");
+insert into Uses values('999000999',4,"2019-5-12 13:35:52","test13");
+insert into Uses values('000111000',4,"2019-12-24 18:34:12","test14");
+
 
 #transaction info : ssn , customer id('10045','12345','18888','19755','33333','44444','54321','56665','99764','99999',), service id(01 -10)
 insert into TransactionInfo values('111000111','10045','01',"2019-11-24 00:30:02", 10000.00, 'Highly Satisfied');
@@ -155,4 +166,3 @@ insert into TransactionInfo values('777000777','44444','08',"2019-11-24 00:30:23
 insert into TransactionInfo values('777000777','54321','08',"2019-11-24 00:00:54", 7000.00, 'Highly Satisfied');
 insert into TransactionInfo values('111000111','99764','06',"2019-11-24 00:00:24", 800.00, 'Satisfied');
 insert into TransactionInfo values('000111000','99999','09',"2019-11-24 00:30:11", 600.00, 'Average');
-
