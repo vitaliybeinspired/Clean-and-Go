@@ -51,34 +51,43 @@
 //        END$$
 //        DELIMITER ;
         
-        
-// Working on this one, NOT DONE
-        private static void addEquipment(Connection conn) throws SQLException, IOException {        	
-    		String query = "Insert into Equipment values(?,?,?,?,?)";
-    		PreparedStatement p = conn.prepareStatement(query);
-    
-    		// how are foreign keys made, Asset_ID is auto incremented...
-    		// insert into assets script
-    		// 
+                
+    // Adds a row in assets Entity and a row in Equipment entity from user inputs 
+    private static void addEquipment(Connection conn) throws SQLException, IOException {        		
+        	
+        	// gets row count from assets Entity
+        	String AssetsCount = "SELECT COUNT(*) FROM Assets";
+        	Statement AssetsCountStatement = conn.createStatement();
+		ResultSet rs = AssetsCountStatement.executeQuery(AssetsCount);			
+			
+		// inserts into assets by incrementing by one
+        	String insertIntoAssets = "Insert into Assets values(?)";
+    		PreparedStatement insertIntoAssetsStatement = conn.prepareStatement(insertIntoAssets);
 
-     		String A_ID = readEntry("Enter Asset ID: ");
-     		// increment A_ID
-     		// 
-     		// return count of assets
-     		// first need to get last A_ID or increment A_ID
-    		p.clearParameters();
-    		p.setString(1, A_ID); 
+    		
+    		// inserts into equipment with the value of the assets count and user inputs
+        	String insertIntoEquipment = "Insert into Equipment values(?,?,?,?,?)";
+    		PreparedStatement insertIntoEquipmentStatement = conn.prepareStatement(insertIntoEquipment);
+        	
+			while(rs.next()){
+			    int count = rs.getInt("COUNT(*)");
+			    insertIntoAssetsStatement.setInt(1, count + 1);
+			    insertIntoAssetsStatement.executeUpdate();
+	    		    insertIntoEquipmentStatement.setInt(2, count); 
+			}
+
      		String E_ID = readEntry("Enter Equipment ID: ");
-    		p.setString(2, E_ID);            
+     		insertIntoEquipmentStatement.setString(1, E_ID);            
      		String Brand_Name = readEntry("Enter Brand Name: ");
-    		p.setString(3, Brand_Name);
+     		insertIntoEquipmentStatement.setString(3, Brand_Name);
      		String E_Type = readEntry("Enter Equipment Type: ");
-    		p.setString(4, E_Type);
+     		insertIntoEquipmentStatement.setString(4, E_Type);
      		String MaintPrice = readEntry("Enter Maintaince Price: ");
-    		p.setString(5, MaintPrice);    	
+     		insertIntoEquipmentStatement.setString(5, MaintPrice);    	
     
-    		p.executeUpdate();
+     		insertIntoEquipmentStatement.executeUpdate();
 }
+
 
 //        DELIMITER $$
 //        CREATE PROCEDURE add_service(IN service_ID varchar(50), IN S_Name varchar(20), IN Description varchar(50), IN Rate decimal, 
