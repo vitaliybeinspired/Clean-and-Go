@@ -1,0 +1,148 @@
+package sqlTesting;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.*;
+
+    public class MaxQueries {
+
+        public static void main(String args[]) {
+            Connection conn = null;
+            try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
+            String user, pass;
+            user = readEntry("userid : ");
+            pass = readEntry("password: ");
+            conn = DriverManager.getConnection(url, user, pass);
+            boolean done = false;
+            do {
+            	System.out.println("1: Select total count of all equipments\n2: Select total annual expenses of business\n3: Add new customer script\n5:Quit");
+                System.out.print("Type in your option: ");
+                System.out.flush();
+                String ch = readLine();
+                System.out.println();
+                switch (ch.charAt(0)) {
+                    case '1': selectEquipment(conn);
+                        break;
+                    case '2':
+                    	annualExpenses(conn);
+                        break;
+                    case '3':
+                    	addCustomer(conn);
+                    	break;
+                    case '5': done = true;
+                        break;
+                    default:
+                        System.out.println("Not a valid option");
+                } //switch
+            } while (!done);
+
+
+        } catch (ClassNotFoundException e) {
+            System.out.println("Could not load the driver");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) { /* ignored */}
+            }
+        }
+    }
+        
+    private static void addCustomer(Connection conn) throws SQLException, IOException {        	
+		String CID, Fst,Mnt,Lst,addr,email,phone,cc;
+		CID = readEntry("CID: ");
+		Fst = readEntry("First Name: ");
+		Mnt = readEntry("Middle Initial: ");
+		Lst = readEntry("Last Name: ");
+		addr = readEntry("Address: ");
+		email = readEntry("Email: ");
+		phone = readEntry("Phone Number: ");
+		cc = readEntry("Credit Card Info: ");
+    	
+		String stmt = "CALL newCustomer(?,?,?,?,?,?,?,?)";
+    	CallableStatement cstmt = conn.prepareCall(stmt);
+    	
+    	cstmt.setString(1, CID);
+    	cstmt.setString(2, Fst);
+    	cstmt.setString(3, Mnt);
+    	cstmt.setString(4, Lst);
+    	cstmt.setString(5, addr);
+    	cstmt.setString(6, email);
+    	cstmt.setString(7, phone);
+    	cstmt.setString(8, cc);
+    	
+    	cstmt.executeUpdate();
+    }
+    
+    private static void annualExpenses(Connection c) throws SQLException, IOException
+    {
+    	//statement and query
+    	Statement s = c.createStatement();
+    	String q = "SELECT(SELECT SUM(salary)FROM Employee) + (SELECT SUM(Rent)FROM Building) + (SELECT SUM(MaintPrice)FROM Equipment) + (SELECT SUM(AmountDue) FROM Sells);";
+    	s = c.prepareStatement(q);
+    	
+    	//iterating through rset from query
+    	ResultSet r = s.executeQuery(q);
+    	while(r.next())
+    	{
+    		int count = r.getInt(1);
+    		System.out.println("Total expenses: " + count);
+    	}	
+    }
+    
+    private static void selectEquipment(Connection c) throws SQLException, IOException
+    {
+    	//statement and query
+    	Statement s = c.createStatement();
+    	String q = "SELECT E_Type, Count(*) FROM Equipment AS TotalEquipment GROUP BY E_Type;";
+    	s = c.prepareStatement(q);
+    	
+    	//iterating through rset from query
+    	ResultSet r = s.executeQuery(q);
+    	while(r.next())
+    	{
+    		String eType = r.getString(1);
+    		int count = r.getInt(2);
+    		System.out.println("Type: " + eType + ", Count: " + count);
+    	}	
+    }
+    
+    
+    static String readEntry(String prompt) {
+        try {
+            StringBuffer buffer = new StringBuffer();
+            System.out.print(prompt);
+            System.out.flush();
+            int c = System.in.read();
+            while(c != '\n' && c != -1) {
+                buffer.append((char)c);
+                c = System.in.read();
+            }
+            return buffer.toString().trim();
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    private static String readLine() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr, 1);
+        String line = "";
+
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("Error in SimpleIO.readLine: " +
+                    "IOException was thrown");
+            System.exit(1);
+        }
+        return line;
+    }
+}
