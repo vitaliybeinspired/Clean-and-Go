@@ -142,3 +142,10 @@ create table if not exists TransactionInfo(
     foreign key (Service_ID) references Service(Service_ID) on delete cascade,
     primary key (SSN, Customer_ID, Service_ID)
 );
+
+DELIMITER $$
+CREATE PROCEDURE newCustomer(IN CID varchar(50),IN Fst varchar(25),IN Mnt char(1), IN Lst varchar(220),IN addr varchar(100),IN email varchar(50),IN phone varchar(20),IN cc varchar(225))
+BEGIN
+  INSERT INTO Customer VALUES(CID,Fst,Mnt,Lst,addr,email,phone,cc);
+END $$
+DELIMITER ;
