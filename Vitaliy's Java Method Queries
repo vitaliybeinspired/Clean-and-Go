@@ -20,26 +20,29 @@ import java.sql.*;
                 conn = DriverManager.getConnection(url, user, pass);
 
                 boolean done = false;
-                do {
-                    printMenu();
-                    System.out.print("Type in your option: ");
-                    System.out.flush();
-                    String ch = readLine();
-                    System.out.println();
-                    switch (ch.charAt(0)) {
-                        case 'a': addEmployee(conn);
-                        	break;
-                        case 'b': addEquipment(conn);
-                        	break;
-                        case 'c': addService(conn);
-                        	break;
-                        case 'q': done = true;
-                            break;
-                        default:
-                            System.out.println(" Not a valid option ");
-                    } 
-                } while (!done);
-
+                if (correctLogin(conn)) { // must be an administrator to manipulate database
+	                do {
+	                	printMenu();
+	                    System.out.print("Type in your option: ");
+	                    System.out.flush();
+	                    String ch = readLine();
+	                    System.out.println();
+	                    switch (ch.charAt(0)) {
+	                        case 'a': addEmployee(conn);
+	                        	break;
+	                        case 'b': addEquipment(conn);
+	                        	break;
+	                        case 'c': addService(conn);
+	                        	break;
+	                        //case 'd'; addCustomer(conn);
+	                        //	break;
+	                        case 'q': done = true;
+	                            break;
+	                        default:
+	                            System.out.println(" Not a valid option ");
+	                    } 
+	                } while (!done);
+                }
 
             } catch (ClassNotFoundException e) {
                 System.out.println("Could not load the driver");
@@ -56,34 +59,47 @@ import java.sql.*;
             }
         }
         
+        
+        private static boolean correctLogin(Connection conn)throws SQLException, IOException {
+        	// difference between connecting to database with username and password vs being an adminstrator? 
+            String user = readEntry("userid : ");
+            String pass = readEntry("password: ");
+            String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
+            conn = DriverManager.getConnection(url, user, pass);
+        	return true;
+        	
+        	
+        }
+        
+        
         // inserts a row in the Employee entity by asking user for inputs
         private static void addEmployee(Connection conn) throws SQLException, IOException {        	
-            		String insertIntoEmployee = "Insert into Employee values(?,?,?,?,?,?,?,?,?,?)";
-            		PreparedStatement inserIntoEmployeeStatement = conn.prepareStatement(insertIntoEmployee);
-                        		
-             		String SSN = readEntry("Enter employee SSN: ");
-             		inserIntoEmployeeStatement.setString(1, SSN); 
-             		String Fname = readEntry("Enter First Name: ");
-             		inserIntoEmployeeStatement.setString(2, Fname);            
-             		String Minitial = readEntry("Enter Middle Initial: ");
-             		inserIntoEmployeeStatement.setString(3, Minitial);
-             		String Lname = readEntry("Enter Last Name: ");
-             		inserIntoEmployeeStatement.setString(4, Lname);
-             		String gender = readEntry("Enter Gender: ");
-             		inserIntoEmployeeStatement.setString(5, gender);
-            		String Date = readEntry("Enter Date Hired: ");
-            		inserIntoEmployeeStatement.setString(6, Date); 
-             		String position = readEntry("Enter Position: ");
-             		inserIntoEmployeeStatement.setString(7, position);
-             		String salary = readEntry("Enter Salary: ");
-             		inserIntoEmployeeStatement.setString(8, salary);
-             		String address = readEntry("Enter Address: ");
-             		inserIntoEmployeeStatement.setString(9, address);
-             		String telephone = readEntry("Enter Telephone: ");
-             		inserIntoEmployeeStatement.setString(10, telephone);
-            
-             		inserIntoEmployeeStatement.executeUpdate();
-        }
+    			String insertIntoEmployee = "Insert into Employee values(?,?,?,?,?,?,?,?,?,?)";
+        		PreparedStatement inserIntoEmployeeStatement = conn.prepareStatement(insertIntoEmployee);
+                    		
+         		String SSN = readEntry("Enter employee SSN: ");
+         		inserIntoEmployeeStatement.setString(1, SSN); 
+         		String Fname = readEntry("Enter First Name: ");
+         		inserIntoEmployeeStatement.setString(2, Fname);            
+         		String Minitial = readEntry("Enter Middle Initial: ");
+         		inserIntoEmployeeStatement.setString(3, Minitial);
+         		String Lname = readEntry("Enter Last Name: ");
+         		inserIntoEmployeeStatement.setString(4, Lname);
+         		String gender = readEntry("Enter Gender: ");
+         		inserIntoEmployeeStatement.setString(5, gender);
+        		String Date = readEntry("Enter Date Hired: ");
+        		inserIntoEmployeeStatement.setString(6, Date); 
+         		String position = readEntry("Enter Position: ");
+         		inserIntoEmployeeStatement.setString(7, position);
+         		String salary = readEntry("Enter Salary: ");
+         		inserIntoEmployeeStatement.setString(8, salary);
+         		String address = readEntry("Enter Address: ");
+         		inserIntoEmployeeStatement.setString(9, address);
+         		String telephone = readEntry("Enter Telephone: ");
+         		inserIntoEmployeeStatement.setString(10, telephone);
+        
+         		inserIntoEmployeeStatement.executeUpdate();
+            }
         
         // Adds a row in assets Entity and a row in Equipment entity from user inputs 
         private static void addEquipment(Connection conn) throws SQLException, IOException {        		
@@ -180,17 +196,15 @@ import java.sql.*;
         }
 
         private static void printMenu() {
-            System.out.println("\n        QUERY OPTIONS ");
-            System.out.println("(a) Add employee. ");
-            System.out.println("(b) Add equipment. ");
-            System.out.println("(c) Add service. ");
-            System.out.println("(q) Quit. \n");
+           
+        	// check correct login before going to this menu
+        	System.out.println("\n        INSERT OPTIONS ");
+            System.out.println("(a) Add Employee. ");
+            System.out.println("(b) Add Equipment. ");
+            System.out.println("(c) Add Service. ");
+            System.out.println("(d) Add Customer. ");
+            System.out.println("(q) Main Menu. \n");
         }
 
     }
     
-
-    
-
-
-
