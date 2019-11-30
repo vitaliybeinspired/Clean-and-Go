@@ -4,6 +4,42 @@ import java.io.*;
 
 public class Insert {
     
+    private static void printMenu() {
+        	System.out.println("\n        INSERT OPTIONS ");
+            System.out.println("(a) Add Employee. ");
+            System.out.println("(b) Add Equipment. ");
+            System.out.println("(c) Add Service. ");
+            System.out.println("(d) Add Customer. ");
+            System.out.println("(q) Main Menu. \n");
+	}
+	
+	public static void insertMenu(Connection conn) throws SQLException, IOException {
+		 if (correctLogin(conn)) {
+			 boolean done = false;
+		         do {
+		        	 printMenu();
+		             System.out.print("Type in your option: ");
+		             System.out.flush();
+		             String ch = readLine();
+		             System.out.println();
+		             switch (ch.charAt(0)) {
+		                 case 'a': addEmployee(conn);
+		                 	break;
+		                 case 'b': addEquipment(conn);
+		                 	break;
+		                 case 'c': addService(conn);
+		                 	break;
+		                 case 'd': addCustomer(conn);
+		                 	break;
+		                 case 'q': done = true;
+		                     break;
+		                 default:
+		                     System.out.println(" Not a valid option ");
+		             } 
+		         } while (!done);
+		 }
+	}
+	
     private static boolean correctLogin(Connection conn)throws SQLException, IOException {
         System.out.println("Administration login required");
     	String user = readEntry("userid : ");
@@ -131,8 +167,6 @@ public class Insert {
     	cstmt.executeUpdate();
     }
     
-    
-    // ******************** METHOD WILL BE IN EVERY CLASS, REDUNDANT *********************
     public static String readEntry(String prompt) {
         try {
             StringBuffer buffer = new StringBuffer();
@@ -148,5 +182,21 @@ public class Insert {
             return "";
         }
     }
+    
+    private static String readLine() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr, 1);
+        String line = "";
+
+        try {
+            line = br.readLine();
+        } catch (IOException e) {
+            System.out.println("Error in SimpleIO.readLine: " +
+                    "IOException was thrown");
+            System.exit(1);
+        }
+        return line;
+    
+}
 }
     
