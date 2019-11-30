@@ -36,9 +36,6 @@ import java.sql.*;
                 e.printStackTrace();
             } finally {
                 if (conn != null) {
-                    try {
-                        conn.close();
-                    } catch (SQLException e) { /* ignored */}
                 }
             }
         }
