@@ -36,7 +36,8 @@ public class Client {
                         supply.supply(conn);
                         break;
                     case '4':
-
+	                    Insert insert = new Insert();
+                    	insert.insertMenu(conn);
                         break;
                     case '5':
                         AnnualExpense annual = new AnnualExpense();
