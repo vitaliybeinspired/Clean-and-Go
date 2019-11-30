@@ -6,10 +6,10 @@ public class Insert {
     
     private static void printMenu() {
         	System.out.println("\n        INSERT OPTIONS ");
-            System.out.println("(a) Add Employee. ");
-            System.out.println("(b) Add Equipment. ");
-            System.out.println("(c) Add Service. ");
-            System.out.println("(d) Add Customer. ");
+            System.out.println("(1) Add Employee. ");
+            System.out.println("(2) Add Equipment. ");
+            System.out.println("(3) Add Service. ");
+            System.out.println("(4) Add Customer. ");
             System.out.println("(q) Main Menu. \n");
 	}
 	
@@ -23,13 +23,13 @@ public class Insert {
 		             String ch = readLine();
 		             System.out.println();
 		             switch (ch.charAt(0)) {
-		                 case 'a': addEmployee(conn);
+		                 case '1': addEmployee(conn);
 		                 	break;
-		                 case 'b': addEquipment(conn);
+		                 case '2': addEquipment(conn);
 		                 	break;
-		                 case 'c': addService(conn);
+		                 case '3': addService(conn);
 		                 	break;
-		                 case 'd': addCustomer(conn);
+		                 case '4': addCustomer(conn);
 		                 	break;
 		                 case 'q': done = true;
 		                     break;
