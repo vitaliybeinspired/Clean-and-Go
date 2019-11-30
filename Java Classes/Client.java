@@ -25,7 +25,8 @@ public class Client {
                 System.out.println();
                 switch (ch.charAt(0)) {
                     case '1':
-
+                        Equipment equip = new Equipment(conn);
+                        equip.equipMenu();
                         break;
                     case '2':
 
