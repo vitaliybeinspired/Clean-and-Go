@@ -7,15 +7,7 @@ import java.text.DecimalFormat;
 public class AnnualExpense {
 
     public static void annual(Connection conn) {
-        //Connection conn = null;
         try {
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
-            String user, pass;
-            user = "student";
-            pass = "password";
-            conn = DriverManager.getConnection(url, user, pass);
 
             boolean done = false;
             do {
@@ -40,8 +32,6 @@ public class AnnualExpense {
             } while (!done);
 
 
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not load the driver");
         } catch (SQLException ex) {
             System.out.println(ex);
         } catch (IOException e) {

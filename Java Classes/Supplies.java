@@ -9,11 +9,6 @@ import java.sql.*;
             //Connection conn = null;
             try {
 
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
-                String user, pass;
-                conn = DriverManager.getConnection(url, "student", "password");
-
                 boolean done = false;
                 do {
                     printMenu();
@@ -35,9 +30,7 @@ import java.sql.*;
                 } while (!done);
 
 
-            } catch (ClassNotFoundException e) {
-                System.out.println("Could not load the driver");
-            } catch (SQLException ex) {
+            }  catch (SQLException ex) {
                 System.out.println(ex);
             } catch (IOException e) {
                 e.printStackTrace();
