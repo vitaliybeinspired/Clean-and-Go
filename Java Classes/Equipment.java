@@ -5,65 +5,49 @@ import java.sql.*;
 
 
 public class Equipment {
-	Connection conn;
+	public static Connection conn;
 	
-	public Equipment() {
-		try {
-
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
-	        String user, pass;
-//	        user = readEntry("userid : ");
-//	        pass = readEntry("password: ");
-	        user = "student";
-	        pass = "password";
-	        conn = DriverManager.getConnection(url, user, pass);
-
-	        boolean done = false;
-	        do {
-	            printMenu();
-	            System.out.print("Type in your option: ");
-	            System.out.flush();
-	            String ch = readLine();
-	            System.out.println();
-	            switch (ch.charAt(0)) {
-	                case '1':
-	                	findWeeklyEquipmentMschedule(conn);
-	                	break;
-	                case '2':
-	                	findAvgDailyEquipmentUsage(conn);
-	                	break;
-	                case '3':
-	                	CountEquipment(conn);
-	                	break;
-	                case '4': done = true;
-	                    break;
-	                default:
-	                    System.out.println(" Not a valid option ");
-	            } //switch
-	        } while (!done);
-
-
-	    } catch (ClassNotFoundException e) {
-	        System.out.println("Could not load the driver");
-	    } catch (SQLException ex) {
-	        System.out.println(ex);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (conn != null) {
-	            try {
-	                conn.close();
-	            } catch (SQLException e) { /* ignored */}
-	        }
-	    }
-		
+	public Equipment(Connection c) {
+		conn = c;
 	}
 	
-    
+	static void equipMenu() {
+        try {
+        	 boolean done = false;
+             do {
+                 printMenu();
+                 System.out.print("Type in your option: ");
+                 System.out.flush();
+                 String ch = readLine();
+                 System.out.println();
+                 switch (ch.charAt(0)) {
+                     case '1':
+                     	findWeeklyEquipmentMschedule();
+                     	break;
+                     case '2':
+                     	findAvgDailyEquipmentUsage();
+                     	break;
+                     case '3':
+                     	CountEquipment();
+                     	break;
+                     case '4': done = true;
+                         break;
+                     default:
+                         System.out.println(" Not a valid option ");
+                 } //switch
+             } while (!done);
 
 
-	private static void findWeeklyEquipmentMschedule(Connection conn) throws SQLException, IOException {
+        }  catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+	}
+	
+
+
+	static void findWeeklyEquipmentMschedule() throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		//enter date of beginning/end of week
 		String startDay, endDay;
@@ -90,7 +74,7 @@ public class Equipment {
 
 //	
 
-	private static void findAvgDailyEquipmentUsage(Connection conn) throws SQLException, IOException {
+	static void findAvgDailyEquipmentUsage() throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		String query = "select E.E_ID as EquipmentID, count(U.A_ID)/365 as AvgDailyUsage\n" + 
 					"from Equipment as E left join Uses as U\n" + 
@@ -114,11 +98,11 @@ public class Equipment {
 	
 	}
 	
-	private static void CountEquipment(Connection c) throws SQLException, IOException {
+	static void CountEquipment() throws SQLException, IOException {
     	//statement and query
-    	Statement s = c.createStatement();
+    	Statement s = conn.createStatement();
     	String q = "SELECT E_Type, Count(*) FROM Equipment AS TotalEquipment GROUP BY E_Type;";
-    	s = c.prepareStatement(q);
+    	s = conn.prepareStatement(q);
     	
     	//iterating through rset from query
     	ResultSet r = s.executeQuery(q);
@@ -166,8 +150,8 @@ public class Equipment {
         return line;
     }
 
-    private static void printMenu() {
-        System.out.println("\n        QUERY OPTIONS ");
+    static void printMenu() {
+        System.out.println("\n        EQUIPMENT - QUERY OPTIONS ");
         System.out.println("(1) Weekly Maintenance Schedule of Equipment.");
         System.out.println("(2) Average Daily Usage of Equipment for the current year.");
         System.out.println("(3) Total Number of Equipment.");
