@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 
-    public class Template {
+    public class Dominick {
 
         public static void main(String args[]) {
             Connection conn = null;
@@ -12,8 +12,10 @@ import java.sql.*;
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
                 String user, pass;
-                user = readEntry("userid : ");
-                pass = readEntry("password: ");
+//                user = readEntry("userid : ");
+//                pass = readEntry("password: ");
+                user = "student";
+                pass = "password";
                 conn = DriverManager.getConnection(url, user, pass);
 
                 boolean done = false;
@@ -60,8 +62,8 @@ import java.sql.*;
         	Statement stmt = conn.createStatement();
         	//enter date of beginning/end of week
         	String startDay, endDay;
-        	startDay = readEntry("Enter Week Start Date: "); //2019-11-18
-        	endDay = readEntry("Enter Week End Date: "); //2019-11-24
+        	startDay = readEntry("Enter Week Start Date: "); //use 2019-11-18 //use monday as start of week
+        	endDay = readEntry("Enter Week End Date: "); //use 2019-11-24 //use sunday as end of week
         	String query = "select ME.NextMaintDate as WeeklyMaintenanceSchedule,  ME.EquipmentID\n" + 
         					"from MSchedule as ME\n" + 
         					"where (ME.EquipmentID = 01 and  ME.NextMaintDate between" + "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + "); ";
@@ -84,13 +86,16 @@ import java.sql.*;
         private static void findEmpWeeklySchedule(Connection conn) throws SQLException, IOException {
         	Statement stmt = conn.createStatement();
         	String empID;
-        	empID = readEntry("Enter Employee SSN: ");
+        	empID = readEntry("Enter Employee SSN: "); //use 111000111
         	System.out.println();
         	
+        	String startDay, endDay;
+        	startDay = readEntry("Enter Week Start Date: "); //use 2019-11-18 //use monday as start of week
+        	endDay = readEntry("Enter Week End Date: "); //use 2019-11-24 //use sunday as end of week
         	String query = " select S.Workday, S.StartTime, S.EndTime\n" + 
         			"from Employee as E left join Eschedule as S\n" + 
         			"on E.SSN = S.ESSN\n" + 
-        			"where (E.SSN = " + empID + " and S.Workday between \"2019-11-18\" and \"2019-11-24\");";
+        			"where (E.SSN = " + empID + " and S.Workday between " +  "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + ");";
         	PreparedStatement p = conn.prepareStatement(query);
         	
         	ResultSet rset;
@@ -133,48 +138,6 @@ import java.sql.*;
         	
         }
 
-        private static void findHighestPaid(Connection conn) throws SQLException, IOException {
-
-            //STEP1: CREATE VARIABLE OF TYPE STATEMENT
-            Statement stmt = conn.createStatement();
-           // STEP 2 DEFINE A STRING THAT IS = TO YOUR query SQL Statement
-            String query = "select lname, ssn, salary from employee order by salary";
-            PreparedStatement p = conn.prepareStatement(query);
-            
-           
-
-            // Step 3: Declare a variable with ResultSet type
-            ResultSet rset;
-            //Execute your Query and store the return in the declared variable from step 3
-            ResultSet r = stmt.executeQuery(query);
-            while(r.next()) {
-            	String lname = r.getString(1);
-            	String ssn = r.getString(2);
-            	double salary = r.getDouble(3);
-            	
-            	System.out.println(lname + " " + ssn + " " + salary);
-            }
-            
-               
-
-            System.out.println("    HIGHEST PAID WORKERS");
-            System.out.println("--------------------------------------------------\n");
-
-            // Write a loop to read all the returned rows from the query execution
-
-
-           //Close the statement
-            //Close objects
-            p.close();
-            conn.close();
-        }
-
-
-        private static void findMostWorked(Connection conn) throws SQLException, IOException {
-
-          // Complete this method following the same steps above to return the required information
-
-        }
 
         static String readEntry(String prompt) {
             try {
@@ -217,4 +180,5 @@ import java.sql.*;
         }
 
     }
+
 
