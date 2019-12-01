@@ -1,3 +1,6 @@
+
+
+    
 import java.io.BufferedReader;
 
 import java.io.IOException;
@@ -6,7 +9,7 @@ import java.sql.*;
 
 public class Client {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         Connection conn = null;
         try {
 
@@ -19,17 +22,16 @@ public class Client {
             boolean done = false;
             do {
                 printMenu();
-                System.out.print("Type in your option: ");
                 System.out.flush();
                 String ch = readLine();
                 System.out.println();
                 switch (ch.charAt(0)) {
                     case '1':
                         Employee emp = new Employee(conn);
-			emp.empMenu();
+                    	emp.empMenu();
                         break;
                     case '2':
-			Equipment equip = new Equipment(conn);
+                    	Equipment equip = new Equipment(conn);
                         equip.equipMenu();
                         break;
                     case '3':
@@ -50,7 +52,7 @@ public class Client {
                         break;
                     default:
                         System.out.println(" Not a valid option ");
-                } //switch
+                } 
             } while (!done);
 
         } catch (ClassNotFoundException e) {
@@ -98,15 +100,15 @@ public class Client {
     }
 
     private static void printMenu() {
+        System.out.println("\n  Welcome to Clean-and-Go Shop!\n");
+        System.out.println("(1) Get Employee Information ");
+        System.out.println("(2) View Equipment ");
+        System.out.println("(3) View Supplies ");
+        System.out.println("(4) Insert Data ");
+        System.out.println("(5) View Expenses ");
+        System.out.println("(q) Quit \n");
+        System.out.print("Type in your option: ");
 
-        // check correct login before going to this menu
-        System.out.println("\n        SELECT OPTIONS ");
-        System.out.println("(1) Employee. ");
-        System.out.println("(2) Equipment. ");
-        System.out.println("(3) Supplies. ");
-        System.out.println("(4) Insert. ");
-        System.out.println("(5) Expenses. ");
-        System.out.println("(q) Quit. \n");
     }
 
 }
