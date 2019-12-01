@@ -1,3 +1,6 @@
+
+
+    
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,13 +8,8 @@ import java.sql.*;
 
 
 public class Equipment {
-	public static Connection conn;
 	
-	public Equipment(Connection c) {
-		conn = c;
-	}
-	
-	static void equipMenu() {
+	static void equipMenu(Connection conn) {
         try {
         	 boolean done = false;
              do {
@@ -22,13 +20,13 @@ public class Equipment {
                  System.out.println();
                  switch (ch.charAt(0)) {
                      case '1':
-                     	findWeeklyEquipmentMschedule();
+                     	findWeeklyEquipmentMschedule(conn);
                      	break;
                      case '2':
-                     	findAvgDailyEquipmentUsage();
+                     	findAvgDailyEquipmentUsage(conn);
                      	break;
                      case '3':
-                     	CountEquipment();
+                     	CountEquipment(conn);
                      	break;
                      case '4': done = true;
                          break;
@@ -47,7 +45,7 @@ public class Equipment {
 	
 
 
-	static void findWeeklyEquipmentMschedule() throws SQLException, IOException {
+	static void findWeeklyEquipmentMschedule(Connection conn) throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		//enter date of beginning/end of week
 		String startDay, endDay;
@@ -74,7 +72,7 @@ public class Equipment {
 
 //	
 
-	static void findAvgDailyEquipmentUsage() throws SQLException, IOException {
+	static void findAvgDailyEquipmentUsage(Connection conn) throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		String query = "select E.E_ID as EquipmentID, count(U.A_ID)/365 as AvgDailyUsage\n" + 
 					"from Equipment as E left join Uses as U\n" + 
@@ -98,7 +96,7 @@ public class Equipment {
 	
 	}
 	
-	static void CountEquipment() throws SQLException, IOException {
+	static void CountEquipment(Connection conn) throws SQLException, IOException {
     	//statement and query
     	Statement s = conn.createStatement();
     	String q = "SELECT E_Type, Count(*) FROM Equipment AS TotalEquipment GROUP BY E_Type;";
