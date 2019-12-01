@@ -5,12 +5,14 @@ import java.io.*;
 public class Insert {
     
     private static void printMenu() {
-        	System.out.println("\n        INSERT OPTIONS ");
+        	System.out.println("\n  Insert Options for Clean-and-Go Shop\n");
             System.out.println("(1) Add Employee. ");
             System.out.println("(2) Add Equipment. ");
             System.out.println("(3) Add Service. ");
             System.out.println("(4) Add Customer. ");
             System.out.println("(q) Main Menu. \n");
+            System.out.print("Type in your option: ");
+
 	}
 	
 	public static void insertMenu(Connection conn) throws SQLException, IOException {
@@ -18,7 +20,6 @@ public class Insert {
 			 boolean done = false;
 		         do {
 		        	 printMenu();
-		             System.out.print("Type in your option: ");
 		             System.out.flush();
 		             String ch = readLine();
 		             System.out.println();
@@ -76,6 +77,7 @@ public class Insert {
      		inserIntoEmployeeStatement.setString(10, telephone);
     
      		inserIntoEmployeeStatement.executeUpdate();
+     		
         }
     
     
@@ -197,6 +199,11 @@ public class Insert {
         }
         return line;
     
+    }
 }
-}
+
+
+
+
+
     
