@@ -200,17 +200,22 @@ INTO TABLE MSchedule
 FIELDS terminated by ',' enclosed by '"'
 lines TERMINATED BY '\r\n';
 
+
+SET foreign_key_checks = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\max0p\\OneDrive\\Desktop\\Project2Data\\sells' REPLACE
 INTO TABLE Sells
 FIELDS terminated by ',' enclosed by '"'
 lines TERMINATED BY '\r\n';
+SET foreign_key_checks = 1;
 
 LOAD DATA LOCAL INFILE 'C:\\Users\\max0p\\OneDrive\\Desktop\\Project2Data\\uses' REPLACE
 INTO TABLE Uses
 FIELDS terminated by ',' enclosed by '"'
 lines TERMINATED BY '\r\n'; 
 
+SET foreign_key_checks = 0;
 LOAD DATA LOCAL INFILE 'C:\\Users\\max0p\\OneDrive\\Desktop\\Project2Data\\transaction' REPLACE
 INTO TABLE TransactionInfo
 FIELDS terminated by ',' enclosed by '"'
 lines TERMINATED BY '\r\n'; 
+SET foreign_key_checks = 1;
