@@ -1,16 +1,13 @@
+
+    
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 
 public class Employee {
-	public static Connection conn;
 	
-	public Employee(Connection c) {
-		conn = c;
-	}
-	
-	static void empMenu() {
+	static void empMenu(Connection conn) {
         try {
         	 boolean done = false;
              do {
@@ -21,7 +18,7 @@ public class Employee {
                  System.out.println();
                  switch (ch.charAt(0)) {
                      case '1':
-                     	findEmpWeeklySchedule();
+                     	findEmpWeeklySchedule(conn);
                      	break;
                      case '4': done = true;
                          break;
@@ -38,7 +35,7 @@ public class Employee {
         } 
 	}
 	
-	private static void findEmpWeeklySchedule() throws SQLException, IOException {
+	private static void findEmpWeeklySchedule(Connection conn) throws SQLException, IOException {
     	Statement stmt = conn.createStatement();
     	String empID;
     	empID = readEntry("Enter Employee SSN: "); //use 111000111
