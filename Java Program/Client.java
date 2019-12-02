@@ -27,12 +27,12 @@ public class Client {
                 System.out.println();
                 switch (ch.charAt(0)) {
                     case '1':
-                        Employee emp = new Employee(conn);
-                    	emp.empMenu();
+                        Employee emp = new Employee();
+                    	emp.empMenu(conn);
                         break;
                     case '2':
-                    	Equipment equip = new Equipment(conn);
-                        equip.equipMenu();
+                    	Equipment equip = new Equipment();
+                        equip.equipMenu(conn);
                         break;
                     case '3':
                         Supplies supply = new Supplies();
