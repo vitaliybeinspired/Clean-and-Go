@@ -153,6 +153,45 @@ BEGIN
 END $$
 DELIMITER ;
 
+
+DELIMITER $$
+CREATE PROCEDURE insertAssets(IN A_ID int(11) )
+BEGIN
+insert into Assets values(A_ID); 
+END$$
+DELIMITER ;
+
+DELIMITER $$
+ CREATE PROCEDURE add_employee(IN SSN char(9), IN Fname varchar(20), IN Minitial char(1), IN Lname varchar(20), IN gender varchar(20),
+ IN DateHired date, IN position varchar(20), IN salary decimal(8,2), IN addres varchar(100), IN telephone varchar(20))
+ 
+ BEGIN
+ INSERT INTO Employee VALUES(SSN, Fname, Minitial, Lname, gender, DateHired, position, salary, address, telephone);
+ END$$
+ DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE add_equipment(OUT E_ID varchar(50), OUT A_ID int(11), IN Brand_Name varchar(25), 
+IN E_Type varchar(20), IN MaintPrice decimal)
+
+BEGIN
+INSERT INTO Equipment VALUES(E_ID, A_ID, Brand_Name, E_Type, MaintPrice);
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE add_service(IN service_ID varchar(50), IN S_Name varchar(20), IN Description varchar(50), IN Rate decimal, 
+IN Duration decimal) 
+
+BEGIN
+INSERT INTO Service VALUES(service_ID, S_Name, Description, Rate, Duration);
+END$$
+DELIMITER ;
+
+
+
+
 LOAD DATA LOCAL INFILE 'C:\\Users\\max0p\\OneDrive\\Desktop\\Project2Data\\employee' REPLACE
 INTO TABLE Employee
 FIELDS terminated by ',' enclosed by '"'
