@@ -1,13 +1,16 @@
-
-    
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 
 public class Employee {
+	public static Connection conn;
 	
-	static void empMenu(Connection conn) {
+	public Employee(Connection c) {
+		conn = c;
+	}
+	
+	static void empMenu() {
         try {
         	 boolean done = false;
              do {
@@ -18,7 +21,7 @@ public class Employee {
                  System.out.println();
                  switch (ch.charAt(0)) {
                      case '1':
-                     	findEmpWeeklySchedule(conn);
+                     	findEmpWeeklySchedule();
                      	break;
                      case '4': done = true;
                          break;
@@ -35,15 +38,15 @@ public class Employee {
         } 
 	}
 	
-	private static void findEmpWeeklySchedule(Connection conn) throws SQLException, IOException {
+	private static void findEmpWeeklySchedule() throws SQLException, IOException {
     	Statement stmt = conn.createStatement();
     	String empID;
     	empID = readEntry("Enter Employee SSN: "); //use 111000111
     	System.out.println();
     	
     	String startDay, endDay;
-    	startDay = readEntry("Enter Week Start Date: "); //use 2019-11-18 //use monday as start of week
-    	endDay = readEntry("Enter Week End Date: "); //use 2019-11-24 //use sunday as end of week
+    	startDay = readEntry("Enter Week Start Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-18 //use monday as start of week
+    	endDay = readEntry("Enter Week End Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-24 //use sunday as end of week
     	String query = " select S.Workday, S.StartTime, S.EndTime\n" + 
     			"from Employee as E left join Eschedule as S\n" + 
     			"on E.SSN = S.ESSN\n" + 
@@ -53,7 +56,7 @@ public class Employee {
     	ResultSet rset;
     	
     	ResultSet r = stmt.executeQuery(query);
-    	System.out.println("          Employee Schedule for " + empID );
+    	System.out.println("          Employee Schedule");
     	System.out.println("--------------------------------------------------\n");
     	while(r.next()) {
     		String Workday = r.getString(1);
