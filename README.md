@@ -7,6 +7,9 @@ https://www.youtube.com/watch?v=SWYqp7iY_Tc
 # Design Choices and Assumptions Doc
 https://docs.google.com/document/d/1NZGom_8BOcr32HMkV5qptUtQBwFQRMPKA_ozgBQPELg/edit?usp=sharing
 
+# Progress Report Google Doc
+https://docs.google.com/document/d/1eHVRKUrIPXJ7pbnyGF9KuCpqMPZIE2WJQJu-v57uif0/edit?usp=sharing
+
 # Schema Diagram
 https://docs.google.com/drawings/d/18yJQ_bb24zxtwxgCiXeXRbbP8V-QPFmIOCPQeAwqyoo/edit?usp=sharing
 
