@@ -10,7 +10,7 @@ https://docs.google.com/document/d/1NZGom_8BOcr32HMkV5qptUtQBwFQRMPKA_ozgBQPELg/
 # Progress Report Google Doc
 https://docs.google.com/document/d/1eHVRKUrIPXJ7pbnyGF9KuCpqMPZIE2WJQJu-v57uif0/edit?usp=sharing
 
-# Youtube Video
+# Youtube Group Presentation Video
 https://youtu.be/bGMQCpiBzeY
 
 # Schema Diagram
