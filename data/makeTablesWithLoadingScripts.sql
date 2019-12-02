@@ -1,3 +1,5 @@
+create schema CleanandGo
+
 create table if not exists Employee(
 	SSN char(9) not NULL,
     Fname varchar(20),
