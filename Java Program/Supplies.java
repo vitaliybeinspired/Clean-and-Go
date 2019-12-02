@@ -95,8 +95,9 @@ import java.sql.*;
                 String CUsage = rset.getString(3);
                 String Inventory = rset.getString(4);
                 String SafetyInfo = rset.getString(5);
-
-                System.out.println(A_ID + " " + CName + " " + CUsage + " " + Inventory + " " + SafetyInfo);
+                System.out.println("A_ID: " + A_ID);
+                System.out.println(CName + " " + CUsage);
+                System.out.println("Inventory: " + Inventory + ", SafetyStock: " + SafetyInfo);
             }
 
 
@@ -123,8 +124,8 @@ import java.sql.*;
             System.out.println("\n *************************************" +
                                "\n     2.Supplies " +
                                "\n *************************************");
-            System.out.println("(1) Product suppliers. ");
-            System.out.println("(2) Cleaning Supplies Alert. ");
+            System.out.println("(1) Suppliers' Products. ");
+            System.out.println("(2) Cleaning Supplies Inventory Alert. ");
             System.out.println("(q) Quit. \n");
         }
 
