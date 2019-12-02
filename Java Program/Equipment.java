@@ -50,18 +50,19 @@ public class Equipment {
 	static void findWeeklyEquipmentMschedule() throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		//enter date of beginning/end of week
-		String startDay, endDay;
+		String startDay, endDay, eID;
+		eID = readEntry("Enter Equipment ID: ");
 		startDay = readEntry("Enter Week Start Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-18 //use monday as start of week
 		endDay = readEntry("Enter Week End Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-24 //use sunday as end of week
 		String query = "select ME.NextMaintDate as WeeklyMaintenanceSchedule,  ME.EquipmentID\n" + 
 					"from MSchedule as ME\n" + 
-					"where (ME.EquipmentID = 01 and  ME.NextMaintDate between" + "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + "); ";
+					"where (ME.EquipmentID = " + eID + " and  ME.NextMaintDate between" + "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + "); ";
 		PreparedStatement p = conn.prepareStatement(query);
 	
 		ResultSet rset;
 	
 		ResultSet r = stmt.executeQuery(query);
-		System.out.println("          Weekly Maintenance Schedule of Equipment ");
+		System.out.println("          Weekly Maintenance Schedule of Equipment #: " + eID);
 		System.out.println("--------------------------------------------------\n");
 		while(r.next()) {
 			String WeeklyMaintenanceSchedule = r.getString(1);
