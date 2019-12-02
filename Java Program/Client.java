@@ -1,5 +1,6 @@
 
 
+
     
 import java.io.BufferedReader;
 
@@ -39,8 +40,15 @@ public class Client {
                         supply.supply(conn);
                         break;
                     case '4':
-	                    Insert insert = new Insert();
-                    	insert.insertMenu(conn);
+		    try {
+			Insert insert = new Insert();
+			insert.insertMenu(conn);
+		    	}
+			catch (Exception e) {
+				System.out.println();
+				System.out.println("Invalid username or password.");
+				break;
+                        }
                         break;
                     case '5':
                         AnnualExpense annual = new AnnualExpense();
