@@ -1,6 +1,3 @@
-
-
-    
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,8 +5,13 @@ import java.sql.*;
 
 
 public class Equipment {
+	public static Connection conn;
 	
-	static void equipMenu(Connection conn) {
+	public Equipment(Connection c) {
+		conn = c;
+	}
+	
+	static void equipMenu() {
         try {
         	 boolean done = false;
              do {
@@ -20,13 +22,13 @@ public class Equipment {
                  System.out.println();
                  switch (ch.charAt(0)) {
                      case '1':
-                     	findWeeklyEquipmentMschedule(conn);
+                     	findWeeklyEquipmentMschedule();
                      	break;
                      case '2':
-                     	findAvgDailyEquipmentUsage(conn);
+                     	findAvgDailyEquipmentUsage();
                      	break;
                      case '3':
-                     	CountEquipment(conn);
+                     	CountEquipment();
                      	break;
                      case '4': done = true;
                          break;
@@ -45,12 +47,12 @@ public class Equipment {
 	
 
 
-	static void findWeeklyEquipmentMschedule(Connection conn) throws SQLException, IOException {
+	static void findWeeklyEquipmentMschedule() throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
 		//enter date of beginning/end of week
 		String startDay, endDay;
-		startDay = readEntry("Enter Week Start Date: "); //use 2019-11-18 //use monday as start of week
-		endDay = readEntry("Enter Week End Date: "); //use 2019-11-24 //use sunday as end of week
+		startDay = readEntry("Enter Week Start Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-18 //use monday as start of week
+		endDay = readEntry("Enter Week End Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-24 //use sunday as end of week
 		String query = "select ME.NextMaintDate as WeeklyMaintenanceSchedule,  ME.EquipmentID\n" + 
 					"from MSchedule as ME\n" + 
 					"where (ME.EquipmentID = 01 and  ME.NextMaintDate between" + "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + "); ";
@@ -72,19 +74,21 @@ public class Equipment {
 
 //	
 
-	static void findAvgDailyEquipmentUsage(Connection conn) throws SQLException, IOException {
+	static void findAvgDailyEquipmentUsage() throws SQLException, IOException {
 		Statement stmt = conn.createStatement();
+		String year;
+		year = readEntry("Enter year: ");
 		String query = "select E.E_ID as EquipmentID, count(U.A_ID)/365 as AvgDailyUsage\n" + 
 					"from Equipment as E left join Uses as U\n" + 
 					"on E.A_ID = U.A_ID\n" + 
-					"where (U.TimeofUse between \"2019-01-01 00:00:00\" and \"2019-12-31 23:59:59\")\n" + 
+					"where (U.TimeofUse between " + "\"" + year + "-01-01 00:00:00\" and \"" + year + "-12-31 23:59:59\")\n" + 
 					"group by E.E_ID asc;";
 		PreparedStatement p = conn.prepareStatement(query);
 	
 		ResultSet rset;
 	
 		ResultSet r = stmt.executeQuery(query);
-		System.out.println("          Equipment Average Daily Usage ");
+		System.out.println("          Equipment Average Daily Usage in: " + year);
 		System.out.println("--------------------------------------------------\n");
 		while(r.next()) {
 			String EquipmentID = r.getString(1);
@@ -96,7 +100,7 @@ public class Equipment {
 	
 	}
 	
-	static void CountEquipment(Connection conn) throws SQLException, IOException {
+	static void CountEquipment() throws SQLException, IOException {
     	//statement and query
     	Statement s = conn.createStatement();
     	String q = "SELECT E_Type, Count(*) FROM Equipment AS TotalEquipment GROUP BY E_Type;";
@@ -158,33 +162,3 @@ public class Equipment {
     }
 }
 
-//private static void findEmpWeeklySchedule(Connection conn) throws SQLException, IOException {
-//	Statement stmt = conn.createStatement();
-//	String empID;
-//	empID = readEntry("Enter Employee SSN: "); //use 111000111
-//	System.out.println();
-//
-//	String startDay, endDay;
-//	startDay = readEntry("Enter Week Start Date: "); //use 2019-11-18 //use monday as start of week
-//	endDay = readEntry("Enter Week End Date: "); //use 2019-11-24 //use sunday as end of week
-//	String query = " select S.Workday, S.StartTime, S.EndTime\n" + 
-//		"from Employee as E left join Eschedule as S\n" + 
-//		"on E.SSN = S.ESSN\n" + 
-//		"where (E.SSN = " + empID + " and S.Workday between " +  "\"" + startDay + "\"" + " and" + "\"" + endDay + "\"" + ");";
-//	PreparedStatement p = conn.prepareStatement(query);
-//
-//	ResultSet rset;
-//
-//	ResultSet r = stmt.executeQuery(query);
-//	System.out.println("          Employee Schedule for " + empID );
-//	System.out.println("--------------------------------------------------\n");
-//	while(r.next()) {
-//		String Workday = r.getString(1);
-//		String StartTime = r.getString(2);
-//		String EndTime = r.getString(3);
-//		System.out.println("Workday: " + Workday + ", " + "StartTime: " + StartTime + ", " + "EndTime: " + EndTime);
-//	}
-//
-//	System.out.println("--------------------------------------------------\n");
-//
-//}
