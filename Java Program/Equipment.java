@@ -51,7 +51,7 @@ public class Equipment {
 		Statement stmt = conn.createStatement();
 		//enter date of beginning/end of week
 		String startDay, endDay, eID;
-		eID = readEntry("Enter Equipment ID: ");
+		eID = readEntry("Enter Equipment ID: "); // 01
 		startDay = readEntry("Enter Week Start Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-18 //use monday as start of week
 		endDay = readEntry("Enter Week End Date (Use complete date - YYYY-MM-DD): "); //use 2019-11-24 //use sunday as end of week
 		String query = "select ME.NextMaintDate as WeeklyMaintenanceSchedule,  ME.EquipmentID\n" + 
@@ -62,11 +62,13 @@ public class Equipment {
 		ResultSet rset;
 	
 		ResultSet r = stmt.executeQuery(query);
-		System.out.println("          Weekly Maintenance Schedule of Equipment #: " + eID);
+		System.out.println("          Weekly Maintenance Schedule of Equipment");
 		System.out.println("--------------------------------------------------\n");
 		while(r.next()) {
 			String WeeklyMaintenanceSchedule = r.getString(1);
-			System.out.println("Maintenance needed: " + WeeklyMaintenanceSchedule);
+			String EquipmentID = r.getString(2);
+			System.out.println("EquipmentID (" + EquipmentID + ") Maintenance needed: " + WeeklyMaintenanceSchedule);
+			
 		}
 	
 		System.out.println("--------------------------------------------------\n");
