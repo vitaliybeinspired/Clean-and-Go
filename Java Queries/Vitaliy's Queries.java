@@ -1,7 +1,4 @@
-
-
 import java.io.BufferedReader;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
@@ -11,7 +8,6 @@ import java.sql.*;
         public static void main(String args[]) {
             Connection conn = null;
             try {
-
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 String url = "jdbc:mysql://localhost:3306/CleanandGo?serverTimezone=UTC&useSSL=TRUE";
                 String user, pass;
@@ -62,7 +58,6 @@ import java.sql.*;
         
         
         private static boolean correctLogin(Connection conn)throws SQLException, IOException {
-        	// difference between connecting to database with username and password vs being an adminstrator? 
             System.out.println("Administration login required");
         	String user = readEntry("userid : ");
             String pass = readEntry("password: ");
