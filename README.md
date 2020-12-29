@@ -1,8 +1,4 @@
-# BCCS-CS331-ProjectAssignment
-Bellevue College Group 12 CS331 Project
 
-# Group Presentation Video
-https://youtu.be/bGMQCpiBzeY
 
 ## Information System for the “Clean-and-Go” Shop
 
@@ -11,7 +7,7 @@ https://youtu.be/bGMQCpiBzeY
 “Clean-and-Go” is a local shop that provides the following services to the community: coin washers and dryers, drop-off services, and dry cleaning. This business has ten full-time employees. They currently rent their building. The company is interested in building a database information system that would enable them to do the following: keep detailed information about daily collections, monthly expenses and revenues; manage employees’ schedules; manage equipment maintenance schedule;
 etc.
 
-# Database Design
+## Database Design
 
 We present the main entity types of this database. For each entity type, we provide some of the corresponding attributes. Use this information in order to: (a) Build an Enhanced E-R diagram; (b) Transform the Enhanced E-R diagram to a relational database. Identify the primary key(s) and the foreign key(s) for each relation. Draw the relational integrality constraints; (c) For each of the relations created, indicate its normal form. If the relation is not in the 3NF, decompose it into 3NF relations.
   1. Cleaning Supplies: The main attributes are name, description of usage, current inventory, safety stock level, etc.
@@ -31,36 +27,30 @@ information is recorded: date, amount charged, description, satisfaction with th
 quantity purchased, amount due, due date, description, delivery date, etc.
 (f)
 
-# Application Development
+## Application Development
 
-Queries:
+# Queries:
+  1.	The following set of queries will help with the financial analysis of the company:
+    a.	Create a query that calculates the annual expenses from equipment maintenance.
+    b.	Create a query that calculates the annual expenses from cleaning supplies.
+    c.	Create a query that presents the annual expenses from purchasing new equipment.
+    d.	Create a query that calculates the annual expenses from salaries and rent.
+    e.	Create a query that calculates the annual revenues from services provided to customers. Group this information by service type.
+    f.	Create a query that presents the annual earnings of the company.
+  2.	The following set of queries helps to analyze the progress of the business:
+    a.	Create a query that presents the total number of new customers during the current year.
+    b.	Create a query that presents the total number of service transactions during the current month.
+    c.	Create a query that presents details about customer satisfaction with the service provided.
+    d.	Create a query that presents the total number of equipment owned by the company. Group this information by equipment type.
+  3.	Create a query to present the weekly working schedule of the employees.
+  4.	Create a query to present the weekly maintenance schedule of the equipment.
+  5.	The company has regulations about the amount of time (in terms of months) that equipment should be in use. Replacement time differs by equipment type. Create a query that presents the amount of time equipment has been used. Present the number of time period in terms of months.
+  6.	Create a query that presents the average monthly usage per equipment (busy time/total time).
+  7.	Create a query that presents details about the cleaning supplies for which the current inventory is below the safety stock level.
+  8.	Create a query that presents details about the cleaning supply that has been used the most.
+  9.	Create a query that presents details about the service that has been used the most.
+  10.	Create a query that prompts for the name of a supplier and returns a list of products they offer.
 
-  1. The following set of queries will help with the financial analysis of the company:
-    a. Create a query that calculates the annual expenses from equipment maintenance.
-    b. Create a query that calculates the annual expenses from cleaning supplies.
-    c. Create a query that presents the annual expenses from purchasing new equipment.
-    d. Create a query that calculates the annual expenses from salaries and rent.
-    e. Create a query that calculates the annual revenues from services provided to customers.
-    Group this information by service type.
-    f. Create a query that presents the annual earnings of the company. 
-  2. The following set of queries helps to analyze the progress of the business:
-    a. Create a query that presents the total number of new customers during the current year.
-    b. Create a query that presents the total number of service transactions during the current
-    month.
-    c. Create a query that presents details about customer satisfaction with the service provided.
-    d. Create a query that presents the total number of equipment owned by the company.
-       Group this information by equipment type.
-  3. Create a query to present the weekly working schedule of the employees.
-  4. Create a query to present the weekly maintenance schedule of the equipment.
-  5. The company has regulations about the amount of time (in terms of months) that equipment
-  should be in use. Replacement time differs by equipment type. Create a query that presents the
-  amount of time equipment has been used. Present the number of time period in terms of months.
-  6. Create a query that presents the average monthly usage per equipment (busy time/total time). 
-  7. Create a query that presents details about the cleaning supplies for which the current inventory is
-  below the safety stock level.
-  8. Create a query that presents details about the cleaning supply that has been used the most.
-  9. Create a query that presents details about the service that has been used the most.
-  10. Create a query that prompts for the name of a supplier and returns a list of products they offer.
 
 Forms:
   1. Create a user sign-in form together with a registration form for new users.
@@ -105,9 +95,14 @@ In the welcome screen, the user can choose one of the four options presented. We
 
 <em>**Equipment & Cleaning Supplies:**</em> This part of the database keeps information about equipment and cleaning supplies. The employees browse the database to learn about the maintenance schedule of particular equipment, the inventory level of cleaning supplies, etc.
 
-Customers & Services: This part of the database carries information about customers and services provided. Statistics, Graphs & Data Analysis: Users browse this part of the database to identify trends in: the annual expenses, the annual revenues, the total number of new customers, etc.
+<em>**Customers & Services:**</em> This part of the database carries information about customers and services provided. Statistics, Graphs & Data Analysis: Users browse this part of the database to identify trends in: the annual expenses, the annual revenues, the total number of new customers, etc.
 
-Update: This form allows the user to add/delete/update the information kept in this database about equipment, services, customers, etc.
+<em>**Update:**</em> This form allows the user to add/delete/update the information kept in this database about equipment, services, customers, etc.
 
 
 ### Technologies:
+
+
+
+# Bellevue College Group Presentation Video
+https://youtu.be/bGMQCpiBzeY
