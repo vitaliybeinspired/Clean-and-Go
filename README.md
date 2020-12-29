@@ -112,6 +112,12 @@ In the welcome screen, the user can choose one of the four options presented. We
 <em>**Update:**</em> This form allows the user to add/delete/update the information kept in this database about equipment, services, customers, etc.
 
 
+![Schema](https://github.com/vitaliybeinspired/Company-Database-Application/blob/master/sql.png)
+
+![Schema](https://github.com/vitaliybeinspired/Company-Database-Application/blob/master/client.png)
+
+
+
 ### Technologies:
   
   Relational Database SQL, SQL Scripts
