@@ -9,6 +9,13 @@ etc.
 
 ## Database Design
 
+EERD
+![EERD](https://github.com/vitaliybeinspired/Company-Database-Application/blob/master/EERD.png)
+
+Schema
+![Schema](https://github.com/vitaliybeinspired/Company-Database-Application/blob/master/Relational_Schema.png)
+
+
 We present the main entity types of this database. For each entity type, we provide some of the corresponding attributes. Use this information in order to: (a) Build an Enhanced E-R diagram; (b) Transform the Enhanced E-R diagram to a relational database. Identify the primary key(s) and the foreign key(s) for each relation. Draw the relational integrality constraints; (c) For each of the relations created, indicate its normal form. If the relation is not in the 3NF, decompose it into 3NF relations.
   1. Cleaning Supplies: The main attributes are name, description of usage, current inventory, safety stock level, etc.
   2. Customer: The main attributes are identification number, name, address, e-mail, telephone number, credit card information, current balance, etc.
