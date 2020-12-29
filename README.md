@@ -31,13 +31,16 @@ quantity purchased, amount due, due date, description, delivery date, etc.
 
 # Queries:
   1.	The following set of queries will help with the financial analysis of the company:
+    
     a.	Create a query that calculates the annual expenses from equipment maintenance.
     b.	Create a query that calculates the annual expenses from cleaning supplies.
     c.	Create a query that presents the annual expenses from purchasing new equipment.
     d.	Create a query that calculates the annual expenses from salaries and rent.
     e.	Create a query that calculates the annual revenues from services provided to customers. Group this information by service type.
     f.	Create a query that presents the annual earnings of the company.
+    
   2.	The following set of queries helps to analyze the progress of the business:
+    
     a.	Create a query that presents the total number of new customers during the current year.
     b.	Create a query that presents the total number of service transactions during the current month.
     c.	Create a query that presents details about customer satisfaction with the service provided.
@@ -69,6 +72,7 @@ Forms:
 Reports
 
   1. Create the following financial reports:
+    
     a. Present the annual revenues generated from services provided.
     b. Present the annual expenses from the following: rent, salaries, equipment maintenance,
     purchasing new equipment, and cleaning supplies.
@@ -78,6 +82,7 @@ Reports
   3. Report the maintenance schedule during the current month.
   4. Report the weekly schedule of the employees.
   5. Report the following:
+    
     a. Total number of customers per year during the last five years.
     b. Monthly expenses for cleaning supplies during the last twelve months.
     c. Total number of service transactions per month during the last twelve months.
@@ -89,7 +94,7 @@ Reports
 
 This database application can be used by the employees, the manager, the database administrator, etc. In the following figure we present a tentative layout of the system.
 
-![System Layout](https://github.com/vitaliybeinspired/Company-Database-Application/blob/refactor/System%20Layout.png)
+![System Layout](https://github.com/vitaliybeinspired/Company-Database-Application/blob/master/System%20Layout.png)
 
 In the welcome screen, the user can choose one of the four options presented. We give details about the forms or set of forms to be included in each option; however, you are encouraged to add other forms you find relevant. We suggest that the queries, forms, and reports already created in the Access Application Development section be included in here.
 
@@ -101,7 +106,14 @@ In the welcome screen, the user can choose one of the four options presented. We
 
 
 ### Technologies:
-
+  
+  Relational Database SQL, SQL Scripts
+  
+  Java, JDBC
+  
+  Enhanced Enity Relation Diagram (EERD)
+  
+  
 
 
 # Bellevue College Group Presentation Video
