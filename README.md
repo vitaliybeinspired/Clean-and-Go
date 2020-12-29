@@ -4,8 +4,6 @@ Bellevue College Group 12 CS331 Project
 # Group Presentation Video
 https://youtu.be/bGMQCpiBzeY
 
-
-
 ## Information System for the “Clean-and-Go” Shop
 
 # Problem Description
@@ -101,12 +99,15 @@ Reports
 
 This database application can be used by the employees, the manager, the database administrator, etc. In the following figure we present a tentative layout of the system.
 
-
+![System Layout](https://github.com/vitaliybeinspired/Company-Database-Application/blob/refactor/System%20Layout.png)
 
 In the welcome screen, the user can choose one of the four options presented. We give details about the forms or set of forms to be included in each option; however, you are encouraged to add other forms you find relevant. We suggest that the queries, forms, and reports already created in the Access Application Development section be included in here.
 
-Equipment & Cleaning Supplies: This part of the database keeps information about equipment and cleaning supplies. The employees browse the database to learn about the maintenance schedule of particular equipment, the inventory level of cleaning supplies, etc.
+<em>**Equipment & Cleaning Supplies:**</em> This part of the database keeps information about equipment and cleaning supplies. The employees browse the database to learn about the maintenance schedule of particular equipment, the inventory level of cleaning supplies, etc.
 
 Customers & Services: This part of the database carries information about customers and services provided. Statistics, Graphs & Data Analysis: Users browse this part of the database to identify trends in: the annual expenses, the annual revenues, the total number of new customers, etc.
 
 Update: This form allows the user to add/delete/update the information kept in this database about equipment, services, customers, etc.
+
+
+### Technologies:
