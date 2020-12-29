@@ -1,9 +1,6 @@
 # BCCS-CS331-ProjectAssignment
 Bellevue College Group 12 CS331 Project
 
-# Beginning guide to Git/Github
-https://www.youtube.com/watch?v=SWYqp7iY_Tc
-
 # Design Choices and Assumptions Doc
 https://docs.google.com/document/d/1NZGom_8BOcr32HMkV5qptUtQBwFQRMPKA_ozgBQPELg/edit?usp=sharing
 
